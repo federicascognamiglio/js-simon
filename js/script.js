@@ -8,15 +8,16 @@ const counterElem = document.getElementById("counter");
 const resultElem = document.getElementById("result");
 const formElem = document.getElementById("user-numbers");
 
-
-// ESECUZIONE LOGICA
-// Events
 let counter = 0;
 let intervalId = null;
 const generatedNums = [];
 const userNums = [];
 const correctNums = [];
 
+
+// ESECUZIONE LOGICA
+// Events
+// Generate Numbers and start Timer
 startBtn.addEventListener("click", function () {
     if ((intervalId === null)) {
         for (let i = 0; i < 5; i++) {
@@ -39,6 +40,7 @@ startBtn.addEventListener("click", function () {
     }
 });
 
+// Check correct numbers
 formElem.addEventListener("submit", function(event) {
     event.preventDefault();
     const num1 = document.getElementById("num1").value.trim();
@@ -59,11 +61,10 @@ formElem.addEventListener("submit", function(event) {
     resultElem.innerHTML = `Hai indovinato ${correctNums.length} numeri (${correctNums})`;
 });
 
+// Refresh Page
 retryBtn.addEventListener("click", function() {
     document.location.reload();
 });
-
-
 
 // FUNZIONI
 /** Funzione che genera numeri random
