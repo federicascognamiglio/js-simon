@@ -1,5 +1,6 @@
 // DATI
 const startBtn = document.getElementById("start-btn");
+const retryBtn = document.getElementById("retry-btn");
 const givenNums = document.getElementById("given-numbers");
 const introSection = document.getElementById("intro-section");
 const formSection = document.getElementById("form-section");
@@ -14,7 +15,7 @@ let counter = 0;
 let intervalId = null;
 const generatedNums = [];
 const userNums = [];
-let correctNums = [];
+const correctNums = [];
 
 startBtn.addEventListener("click", function () {
     if ((intervalId === null)) {
@@ -45,7 +46,7 @@ formElem.addEventListener("submit", function(event) {
     const num3 = document.getElementById("num3").value.trim();
     const num4 = document.getElementById("num4").value.trim();
     const num5 = document.getElementById("num5").value.trim();
-    userNums.push(num1, num2, num3, num4, num5);
+    userNums.push(parseInt(num1), parseInt(num2), parseInt(num3), parseInt(num4), parseInt(num5));
     console.log(userNums);
     for (let i = 0; i < userNums.length; i++) {
         curItem = userNums[i];
@@ -54,11 +55,13 @@ formElem.addEventListener("submit", function(event) {
         }
     }
     console.log(correctNums);
-    
     resultElem.classList.remove("d-none");
     resultElem.innerHTML = `Hai indovinato ${correctNums.length} numeri (${correctNums})`;
 });
 
+retryBtn.addEventListener("click", function() {
+    document.location.reload();
+});
 
 
 
